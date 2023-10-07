@@ -13,9 +13,6 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Login'),
-      ),
       body: SingleChildScrollView(
         child: SizedBox(
           child: Column(
@@ -28,7 +25,7 @@ class _LoginState extends State<Login> {
               ),
               TextField(
                 decoration: const InputDecoration(
-                  hintText: 'Pass',
+                  hintText: 'Enter Password Here',
                 ),
                 onChanged: (value) {
                   pass = value;
