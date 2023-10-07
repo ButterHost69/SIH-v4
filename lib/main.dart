@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:sih/login.dart';
 import 'package:sih/register.dart';
-import 'package:sih/homepage.dart';
+import 'package:sih/views/homepage/homepage.dart';
 
 // void main(){
 //   // WidgetsFlutterBinding.ensureInitialized();
