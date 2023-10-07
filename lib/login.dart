@@ -60,6 +60,11 @@ class _LoginState extends State<Login> {
                       email=value;
                     },
                   ),
+
+                  const SizedBox(
+                    height: 10,
+                  ),
+
                   TextField(
                     decoration: InputDecoration(
                       hintText: 'Enter Password Here',
