@@ -46,7 +46,7 @@ class _LoginState extends State<Login> {
                     if (e.code == 'user-not-found') {
                       print('No users found for that email.');
                     } else if (e.code == 'wrong-password') {
-                      print('Wrong password provided for that user.');
+                      print('Incorrect password provided for that user.');
                     }
                   }
                   Navigator.pushNamed(context, 'home');
