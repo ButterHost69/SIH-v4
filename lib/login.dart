@@ -20,13 +20,19 @@ class _LoginState extends State<Login> {
         child: SizedBox(
           child: Column(
             children: [
-              const TextField(
-                decoration: InputDecoration(hintText: 'Email'),
+              TextField(
+                decoration: const InputDecoration(hintText: 'Email'),
+                onChanged: (value) {
+                  email=value;
+                },
               ),
-              const TextField(
-                decoration: InputDecoration(
+              TextField(
+                decoration: const InputDecoration(
                   hintText: 'Pass',
                 ),
+                onChanged: (value) {
+                  pass = value;
+                },
               ),
               const SizedBox(
                 height: 20,
@@ -39,8 +45,7 @@ class _LoginState extends State<Login> {
                   try {
                     UserCredential userCredential = await FirebaseAuth.instance
                         .signInWithEmailAndPassword(
-                            email: "barry.allen@example.com",
-                            password: "SuperSecretPassword!");
+                            email: email, password: pass);
                     Navigator.pushNamed(context, 'home');
                   } on FirebaseAuthException catch (e) {
                     if (e.code == 'user-not-found') {
@@ -49,7 +54,6 @@ class _LoginState extends State<Login> {
                       print('Incorrect password provided for that user.');
                     }
                   }
-                  Navigator.pushNamed(context, 'home');
                 },
                 child: const Text('Login'),
               ),
