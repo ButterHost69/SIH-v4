@@ -56,10 +56,7 @@ class _LoginState extends State<Login> {
               ),
               const SizedBox(
                 height: 20,
-              ),
-              const Row(
-                children: [Text('Hola '), Text('Saynara')],
-              )
+              ),  
             ],
           ),
         ),

@@ -14,16 +14,8 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: const Text('Home Page'),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.card_travel),
-          )
-        ],
-      ),
+      // bottomNavigationBar: BottomNavigationBar(
+      
     );
   }
 }
