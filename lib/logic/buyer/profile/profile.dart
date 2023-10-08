@@ -31,11 +31,17 @@ class _ProfileState extends State<Profile> {
             ElevatedButton(
               onPressed: () {
                 setState(() {
-                  Navigator.pushNamed(context, 'register');
+                  Navigator.pushNamed(context, 'login');
                 });
               },
               child: const Text('Log Out'),
-            )
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, 'sellerhome');
+              },
+              child: const Text('Seller'),
+            ),
           ],
         ),
       ),

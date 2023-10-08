@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:sih/logic/cart/cart.dart';
-import 'package:sih/logic/home/home.dart';
-import 'package:sih/logic/profile/profile.dart';
-import 'package:sih/logic/categories/categories.dart';
-import 'package:sih/logic/message/message.dart';
+import 'package:sih/logic/seller/add_products/add_products.dart';
+import 'package:sih/logic/seller/profile/seller_profile.dart';
+import 'package:sih/logic/seller/message/seller_message.dart';
+import 'package:sih/logic/seller/view_orders/view_orders.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class SellerHomePage extends StatefulWidget {
+  const SellerHomePage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<SellerHomePage> createState() => _SellerHomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _SellerHomePageState extends State<SellerHomePage> {
   int index = 2;
   String titl = "Home";
   @override
@@ -25,12 +24,10 @@ class _HomePageState extends State<HomePage> {
       body: index == 0
           ? const Profile()
           : index == 1
-              ? const Cart()
+              ? const AddProducts()
               : index == 2
-                  ? const Home()
-                  : index == 3
-                      ? const Categories()
-                      : const Message(),
+                  ? const ViewOrders()
+                  : const SellerMessage(),
       bottomNavigationBar: BottomNavigationBar(
         selectedIconTheme: const IconThemeData(
             // color: Colors.white
@@ -43,18 +40,13 @@ class _HomePageState extends State<HomePage> {
           ),
           BottomNavigationBarItem(
             backgroundColor: Colors.blue,
-            label: 'Cart',
-            icon: Icon(Icons.shopping_cart_outlined),
+            label: 'Products',
+            icon: Icon(Icons.add_shopping_cart),
           ),
           BottomNavigationBarItem(
             backgroundColor: Colors.blue,
-            label: 'Home',
-            icon: Icon(Icons.home_outlined),
-          ),
-          BottomNavigationBarItem(
-            backgroundColor: Colors.blue,
-            label: 'Categories',
-            icon: Icon(Icons.card_travel),
+            label: 'Orders',
+            icon: Icon(Icons.list),
           ),
           BottomNavigationBarItem(
             backgroundColor: Colors.blue,
