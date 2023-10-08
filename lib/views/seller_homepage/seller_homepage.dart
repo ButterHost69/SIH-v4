@@ -12,8 +12,8 @@ class SellerHomePage extends StatefulWidget {
 }
 
 class _SellerHomePageState extends State<SellerHomePage> {
-  int index = 2;
-  String titl = "Home";
+  int index = 0;
+  String titl = "Profile";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
