@@ -59,13 +59,11 @@ class _RegisterState extends State<Register> {
                       });
                     },
                   ),
-
                   const SizedBox(
                     height: 10,
                   ),
-
                   TextField(
-                    decoration:InputDecoration(
+                    decoration: InputDecoration(
                       hintText: 'Enter Password',
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0),
