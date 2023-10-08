@@ -14,6 +14,9 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   String email = "", pass = "";
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,6 +50,7 @@ class _LoginState extends State<Login> {
                     height: 20,
                   ),
                   TextField(
+                    controller: _emailController,
                     decoration: InputDecoration(
                       hintText: 'Email',
                       border: OutlineInputBorder(
@@ -65,6 +69,7 @@ class _LoginState extends State<Login> {
                     height: 10,
                   ),
                   TextField(
+                    controller: _passwordController,
                     decoration: InputDecoration(
                       hintText: 'Enter Password Here',
                       border: OutlineInputBorder(
@@ -102,21 +107,42 @@ class _LoginState extends State<Login> {
                         ),
                         onPressed: () async {
                           try {
-                            UserCredential userCredential = await FirebaseAuth
-                                .instance
+                            // UserCredential userCredential = await FirebaseAuth
+                            //     .instance
+                            //     .signInWithEmailAndPassword(
+                            //   email: email,
+                            //   password: pass,
+                            // );
+                            final credential = await FirebaseAuth.instance
                                 .signInWithEmailAndPassword(
-                                    email: email, password: pass);
-                            setState(() {
-                              UserEmail.userEmail = email;
-                            });
+                              email: email,
+                              password: pass,
+                            );
+
+                            //Clears TextField of Email & Pass
+                            _emailController.clear();
+                            _passwordController.clear();
+
                             Navigator.pushNamed(context, 'home');
                           } on FirebaseAuthException catch (e) {
+                            String errorMessage = "";
                             if (e.code == 'user-not-found') {
-                              print('No users Found for that email.');
+                              // print('No users Found for that email.');
+                              errorMessage = "No users Found for that email.";
                             } else if (e.code == 'wrong-password') {
-                              print(
-                                  'Incorrect password provided for that user.');
+                              // print('Incorrect password provided for that user.');
+                              errorMessage = "No users Found for that email.";
+                            } else {
+                              errorMessage = "Invalid Login Credentials";
                             }
+
+                            setState(() {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(errorMessage),
+                                ),
+                              );
+                            });
                           }
                         },
                         child: const Text('Login'),
@@ -125,6 +151,9 @@ class _LoginState extends State<Login> {
                       //Register Button
                       OutlinedButton(
                         onPressed: () {
+                          //Clears TextField of Email & Pass
+                          _emailController.clear();
+                          _passwordController.clear();
                           Navigator.pushNamed(context, 'register');
                         },
                         style: ButtonStyle(

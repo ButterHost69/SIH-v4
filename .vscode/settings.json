@@ -1,3 +1,4 @@
 {
-    "cmake.sourceDirectory": "C:/Users/palas/Desktop/Files/SIH/sih/windows/flutter"
+    "cmake.sourceDirectory": "C:/Users/palas/Desktop/Files/SIH/sih/windows/flutter",
+    "cmake.configureOnOpen": false
 }

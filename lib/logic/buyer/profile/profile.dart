@@ -31,7 +31,7 @@ class _ProfileState extends State<Profile> {
             ElevatedButton(
               onPressed: () {
                 setState(() {
-                  Navigator.pushNamed(context, 'login');
+                  Navigator.pop(context);
                 });
               },
               child: const Text('Log Out'),

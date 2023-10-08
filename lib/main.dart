@@ -7,23 +7,18 @@ import 'package:sih/register.dart';
 import 'package:sih/views/buyer_homepage/buyer_homepage.dart';
 import 'package:sih/views/seller_homepage/seller_homepage.dart';
 
-// void main(){
-//   // WidgetsFlutterBinding.ensureInitialized();
-//   // await Firebase.initializeApp();
-//   runApp(MaterialApp(
-//     debugShowCheckedModeBanner: false,
-//     initialRoute: 'Register',
-//     routes: {'Register':(context) => Register()},
-//     // routes: {'Register':(context) => Register() , 'Login':(context) => Login()},
-//   ));
-// }
+import 'firebase_options.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+
+  //Initialising Firebase
+  _initFirebase();
+
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    initialRoute: 'register',
+    initialRoute: 'login',
     routes: {
       'register': (context) => const Register(),
       'login': (context) => const Login(),
@@ -31,4 +26,10 @@ Future<void> main() async {
       'sellerhome': (context) => const SellerHomePage(),
     },
   ));
+}
+
+_initFirebase() async {
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 }

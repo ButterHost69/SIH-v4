@@ -106,14 +106,29 @@ class _RegisterState extends State<Register> {
                               email: email,
                               password: pass,
                             );
-                            Navigator.pushNamed(context, 'login');
+
+                            Navigator.pop(context);
                           } on FirebaseAuthException catch (e) {
+                            String errorMessage = "";
+
                             if (e.code == 'weak-password') {
-                              print('The password provided is too weak.');
+                              errorMessage =
+                                  "The password provided is too weak.";
+                              // print('The password provided is too weak.');
                             } else if (e.code == 'email-already-in-use') {
-                              print(
-                                  'The account already exists for that email.');
+                              errorMessage =
+                                  "The account already exists for that email.";
+                              // print('The account already exists for that email.');
+                            } else {
+                              errorMessage = "An error occured";
                             }
+                            setState(() {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(errorMessage),
+                                ),
+                              );
+                            });
                           } catch (e) {
                             print(e);
                           }
@@ -127,7 +142,7 @@ class _RegisterState extends State<Register> {
                       // Login Page Button
                       OutlinedButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, 'login');
+                          Navigator.pop(context);
                         },
                         style: ButtonStyle(
                           padding: MaterialStateProperty.all(
