@@ -61,11 +61,9 @@ class _SellerHomePageState extends State<SellerHomePage> {
             if (index == 0) {
               titl = "Profile";
             } else if (index == 1) {
-              titl = "Cart";
+              titl = "Add Products";
             } else if (index == 2) {
-              titl = "Home";
-            } else if (index == 3) {
-              titl = "Categories";
+              titl = "View Orders";
             } else {
               titl = "Message";
             }

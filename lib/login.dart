@@ -1,6 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+class UserEmail {
+  static String userEmail = "";
+}
+
 class Login extends StatefulWidget {
   const Login({super.key});
 
@@ -102,6 +106,9 @@ class _LoginState extends State<Login> {
                                 .instance
                                 .signInWithEmailAndPassword(
                                     email: email, password: pass);
+                            setState(() {
+                              UserEmail.userEmail = email;
+                            });
                             Navigator.pushNamed(context, 'home');
                           } on FirebaseAuthException catch (e) {
                             if (e.code == 'user-not-found') {

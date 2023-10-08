@@ -9,7 +9,7 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
-  String temp = "";
+  String temp = UserEmail.userEmail;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -22,9 +22,9 @@ class _ProfileState extends State<Profile> {
               width: 150,
               height: 150,
             ),
-            const Text(
-              'Email',
-              style: TextStyle(
+            Text(
+              '$temp',
+              style: const TextStyle(
                 fontWeight: FontWeight.bold,
               ),
             ),
