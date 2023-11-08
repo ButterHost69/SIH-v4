@@ -14,8 +14,8 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   String email = "", pass = "";
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -123,6 +123,11 @@ class _LoginState extends State<Login> {
                             _emailController.clear();
                             _passwordController.clear();
 
+                            setState(() {
+                              email = "";
+                              pass = "";
+                            });
+
                             Navigator.pushNamed(context, 'home');
                           } on FirebaseAuthException catch (e) {
                             String errorMessage = "";
@@ -155,6 +160,11 @@ class _LoginState extends State<Login> {
                           _emailController.clear();
                           _passwordController.clear();
                           Navigator.pushNamed(context, 'register');
+
+                          setState(() {
+                            email = "";
+                            pass = "";
+                          });
                         },
                         style: ButtonStyle(
                           padding: MaterialStateProperty.all(
